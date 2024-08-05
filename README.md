@@ -198,4 +198,6 @@ backend
 │       └── utils
 │           ├── _init_.py
 │           └── utils.py
+│
+└── .env
 ```

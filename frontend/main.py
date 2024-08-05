@@ -5,7 +5,7 @@ from src.app import App
 def main():
     app: App = App(
         title="Task Manager",
-        resizable=False,
+        resizable=True,
         width=Size.window_size[0],
         height=Size.window_size[1],
     )

@@ -194,5 +194,5 @@ class SignUpPage(ctk.CTkFrame):
         self.pass_show_btn.place(x=248, y=256)
         self.cpass_show_btn.place(x=248, y=336)
         self.navigate_label.bind(
-            "<Button-1>", command=lambda: self.controller.navigate_to("SignInPage")
+            "<Button-1>", command=lambda x: self.controller.navigate_to("SignInPage")
         )

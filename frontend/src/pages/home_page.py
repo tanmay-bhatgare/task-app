@@ -142,6 +142,7 @@ class HomePage(ctk.CTkFrame):
                     task_id=task_id
                 ),
                 delete_command=lambda task_id=task_id: self.open_delete_modal(task_id),
+                due_date=format_to_date(task["due_date"]),
             )
             self.cards.pack(fill="x", pady=2, padx=3)
             CSeperator(self.main_frame.scrollable_frame, seperation=10)

@@ -63,9 +63,9 @@ class CTaskCard(ctk.CTkFrame):
         self.card_description.insert(ctk.END, card_description)
         self.card_description.configure(state="disabled")
 
-        self.task_id = CLabel(
+        self.due_date = CLabel(
             master=self,
-            text=f"Task Id: {task_id}",
+            text=f"Due: {due_date}",
             bg_color="transparent",
             text_color="white",
             font=CFont.font_sm_text(),
@@ -104,7 +104,7 @@ class CTaskCard(ctk.CTkFrame):
         self.card_description.pack(fill="x", padx=8, anchor=ctk.W)
         CSeperator(master=self)
 
-        self.task_id.place(x=240, y=5)
+        self.due_date.place(x=220, y=5)
         self.created_at.pack(anchor=ctk.E, padx=10)
 
         # ? Button Packing

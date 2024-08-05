@@ -5,7 +5,11 @@ import customtkinter as ctk
 from src.app_state import AppState
 
 from src.utils.utils import format_to_date
-from src.services.services import get_all_tasks
+
+from src.services.services import (
+    get_all_tasks,
+    delete_task,
+)
 
 from src.widgets.widget import (
     CButton,
@@ -13,12 +17,14 @@ from src.widgets.widget import (
     CSeperator,
     CTaskCard,
     CScrollableFrame,
+    CTwoOptionsModal,
 )
 
 from src.constants.constants import (
     CFont,
     Pages,
     Size,
+    Url,
 )
 
 
@@ -26,6 +32,26 @@ class HomePage(ctk.CTkFrame):
     def update_task_btn_func(self, task_id):
         self.app_state.update_task_id = task_id
         self.controller.navigate_to(Pages.update_task_page)
+
+    def is_decline(self):
+        self.confirm_delete_modal.place_forget()
+
+    def open_delete_modal(self, task_id: int):
+        self.app_state.set_delete_task_id(task_id)
+        self.confirm_delete_modal.place(x=55, y=209)
+        self.confirm_delete_modal.lift()
+
+    def delete_task(self):
+        self.confirm_delete_modal.place_forget()
+        is_deleted = asyncio.run(
+            delete_task(
+                url=Url.delete_task_url,
+                token=self.app_state.get_access_token(),
+                task_id=self.app_state.delete_task_id,
+            )
+        )
+        if is_deleted:
+            self.load_tasks()
 
     def __init__(
         self,
@@ -47,6 +73,20 @@ class HomePage(ctk.CTkFrame):
             height=height,
             fg_color="#101010",
         )
+        self.confirm_delete_modal = CTwoOptionsModal(
+            master=self.main_frame,
+            height=200,
+            width=250,
+            fg_color="#16161e",
+            border_color="#d8d8d8",
+            border_width=2,
+            modal_title_text="Are You Sure?",
+            modal_message_text="This process can't be undone!",
+            modal_title_text_color="#ff0000",
+            option_confirm_func=self.delete_task,
+            option_decline_func=self.is_decline,
+        )
+
         self.create_task_btn = CButton(
             self.main_frame,
             width=30,
@@ -101,7 +141,7 @@ class HomePage(ctk.CTkFrame):
                 update_command=lambda task_id=task_id: self.update_task_btn_func(
                     task_id=task_id
                 ),
-                delete_command=lambda task_id=task_id: print(f"Delete task {task_id}"),
+                delete_command=lambda task_id=task_id: self.open_delete_modal(task_id),
             )
             self.cards.pack(fill="x", pady=2, padx=3)
             CSeperator(self.main_frame.scrollable_frame, seperation=10)

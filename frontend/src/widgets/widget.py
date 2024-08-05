@@ -7,6 +7,7 @@ from src.widgets.c_frame import CFrame
 from src.widgets.c_task_card import CTaskCard
 from src.widgets.c_scrollable_frame import CScrollableFrame
 from src.widgets.c_image import CImage
+from src.widgets.c_two_options_modal import CTwoOptionsModal
 
 __all__ = [
     "CCalendar",
@@ -18,4 +19,5 @@ __all__ = [
     "CTaskCard",
     "CScrollableFrame",
     "CImage",
+    "CTwoOptionsModal",
 ]

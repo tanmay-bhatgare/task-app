@@ -5,3 +5,4 @@ class Url:
     sign_in_url: str = f"{base_url}/login"
     create_task_url: str = f"{task_base_url}/create"
     update_task_url: str = f"{task_base_url}/update"
+    delete_task_url: str = f"{task_base_url}/delete"

@@ -22,12 +22,16 @@ from src.constants.constants import (
     Url,
 )
 
-from src.utils.utils import convert_date_to_json, format_to_date
+from src.utils.utils import (
+    convert_date_to_json,
+    format_to_date,
+    navigate_back,
+)
 
 
 class UpdateTaskPage(ctk.CTkFrame):
     @staticmethod
-    def are_values_empty(title: str, description: str)-> bool:
+    def are_values_empty(title: str, description: str) -> bool:
         if (
             title.replace(" ", "") == ""
             or description.replace("\n", "").replace(" ", "") == ""
@@ -189,3 +193,18 @@ class UpdateTaskPage(ctk.CTkFrame):
 
         CSeperator(master=self.main_frame, color="transparent", seperation=8)
         self.submit_button.pack()
+
+        self.back_button = CButton(
+            master=self,
+            command=lambda: navigate_back(
+                self.app_state.previous_page, self.controller
+            ),
+            text="‹",
+            width=25,
+            height=25,
+            font=CFont.font_med(38),
+            fg_color="transparent",
+            text_color="white",
+        )
+        self.back_button.lift()
+        self.back_button.place(x=0, y=0)

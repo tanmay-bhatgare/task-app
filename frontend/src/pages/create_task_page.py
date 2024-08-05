@@ -6,7 +6,11 @@ from src.app_state import AppState
 from src.models.models import TaskCreateModel
 
 from src.services.services import create_task
-from src.utils.utils import convert_date_to_json, format_to_date
+from src.utils.utils import (
+    convert_date_to_json,
+    format_to_date,
+    navigate_back,
+)
 
 from src.widgets.widget import (
     CButton,
@@ -74,6 +78,7 @@ class CreateTaskPage(ctk.CTkFrame):
             )
         )
         if is_task_created:
+            self.app_state.set_previous_page(self.__class__.__name__)
             self.controller.frames[Pages.home_page].load_tasks()
             self.controller.navigate_to(Pages.home_page)
 
@@ -169,3 +174,16 @@ class CreateTaskPage(ctk.CTkFrame):
 
         CSeperator(master=self.card_frame, color="transparent", seperation=20)
         self.submit_button.pack()
+
+        self.back_button = CButton(
+            master=self,
+            command=lambda: navigate_back(self.app_state.previous_page, self.controller),
+            text="‹",
+            width=25,
+            height=25,
+            font=CFont.font_med(38),
+            fg_color="transparent",
+            text_color="white",
+        )
+        self.back_button.lift()
+        self.back_button.place(x=0, y=0)

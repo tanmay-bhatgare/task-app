@@ -29,8 +29,13 @@ from src.constants.constants import (
 
 
 class HomePage(ctk.CTkFrame):
+    def create_button_pressed(self):
+        self.app_state.set_previous_page(self.__class__.__name__)
+        self.controller.navigate_to(Pages.create_task_page)
+
     def update_task_btn_func(self, task_id):
         self.app_state.update_task_id = task_id
+        self.app_state.set_previous_page(self.__class__.__name__)
         self.controller.navigate_to(Pages.update_task_page)
 
     def is_decline(self):
@@ -91,7 +96,7 @@ class HomePage(ctk.CTkFrame):
             self.main_frame,
             width=30,
             height=35,
-            command=lambda: self.controller.navigate_to(Pages.create_task_page),
+            command=self.create_button_pressed,
             text="+",
             text_color="white",
             fg_color="#2864f0",
@@ -129,6 +134,7 @@ class HomePage(ctk.CTkFrame):
         # Create new task cards
         for task in self.current_tasks:
             task_id = task["id"]
+
             self.cards = CTaskCard(
                 master=self.main_frame.scrollable_frame,
                 height=250,

@@ -114,7 +114,8 @@ class HomePage(ctk.CTkFrame):
             if self.current_tasks:
                 self.initialize_task_cards()
             else:
-                CLabel(self.main_frame.canvas, text="No Tasks Found!").pack(
+                self.no_task_found_lbl = CLabel(self.main_frame.canvas, text="No Tasks Found!")
+                self.no_task_found_lbl.pack(
                     fill="both", expand=True
                 )
 

@@ -8,7 +8,6 @@ async def sign_up(url, json_data: SignUpModel) -> bool:
         async with httpx.AsyncClient() as client:
             response = await client.post(url=url, json=json_data.model_dump())
             if response.status_code == 201:
-                print(response.text)
                 return True
             else:
                 print(response.text)

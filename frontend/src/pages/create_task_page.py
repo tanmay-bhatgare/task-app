@@ -79,8 +79,9 @@ class CreateTaskPage(ctk.CTkFrame):
         )
         if is_task_created:
             self.app_state.set_previous_page(self.__class__.__name__)
-            self.controller.frames[Pages.home_page].load_tasks()
             self.controller.navigate_to(Pages.home_page)
+            self.controller.frames[Pages.home_page].no_task_found_lbl.pack_forget()
+            self.controller.frames[Pages.home_page].load_tasks()
 
     def __init__(
         self,

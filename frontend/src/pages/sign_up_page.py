@@ -64,7 +64,6 @@ class SignUpPage(ctk.CTkFrame):
         )
         if success_signup:
             self.controller.navigate_to("SignInPage")
-        print(success_signup)
 
     def __init__(
         self,

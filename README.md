@@ -105,18 +105,18 @@ This project is a full stack Task Manager application. The frontend is built usi
 ```bash
 
 frontend
-    ├── _init_.py
+    ├── __init__.py
     ├── assets
     │   └── images
     │       ├── hide.png
     │       └── view.png
     ├── main.py
     └── src
-        ├── _init_.py
+        ├── __init__.py
         ├── app.py
         ├── app_state.py
         ├── constants
-        │   ├── _init_.py
+        │   ├── __init__.py
         │   ├── c_fonts.py
         │   ├── constants.py
         │   ├── pages.py
@@ -124,7 +124,7 @@ frontend
         │   ├── unit_attributes.py
         │   └── urls.py
         ├── models
-        │   ├── _init_.py
+        │   ├── __init__.py
         │   ├── models.py
         │   ├── sign_in_user_model.py
         │   ├── sign_up_user_model.py
@@ -140,7 +140,7 @@ frontend
         │   ├── sign_up_page.py
         │   └── update_task_page.py
         ├── services
-        │   ├── _init_.py
+        │   ├── __init__.py
         │   ├── create_task.py
         │   ├── get_all_tasks.py
         │   ├── services.py
@@ -150,7 +150,7 @@ frontend
         ├── tests
         │   └── test.py
         ├── utils
-        │   ├── _init_.py
+        │   ├── __init__.py
         │   ├── date_parser.py
         │   └── utils.py
         └── widgets
@@ -172,18 +172,18 @@ frontend
 ```bash
 backend
 │   └── app
-│       ├── _init_.py
+│       ├── __init__.py
 │       ├── authentication
-│       │   ├── _init_.py
+│       │   ├── __init__.py
 │       │   └── oauth2.py
 │       ├── configuration
 │       │   └── config.py
 │       ├── db
-│       │   ├── _init_.py
+│       │   ├── __init__.py
 │       │   └── database.py
 │       ├── main.py
 │       ├── models
-│       │   ├── _init_.py
+│       │   ├── __init__.py
 │       │   ├── taskModel.py
 │       │   └── userModel.py
 │       ├── routes
@@ -191,12 +191,12 @@ backend
 │       │   ├── taskRoutes.py
 │       │   └── userRoutes.py
 │       ├── schemas
-│       │   ├── _init_.py
+│       │   ├── __init__.py
 │       │   ├── taskSchema.py
 │       │   ├── tokenSchema.py
 │       │   └── userSchema.py
 │       └── utils
-│           ├── _init_.py
+│           ├── __init__.py
 │           └── utils.py
 │
 └── .env

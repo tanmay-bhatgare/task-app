@@ -104,6 +104,7 @@ class SignInPage(ctk.CTkFrame):
         self.email_field = CInputField(
             self.form_frame, font=CFont.font_small(), height=40
         )
+        self.email_field.insert(ctk.END, "t4@g.com") #! |||||||||||||||||||||||||||||
 
         # ? Password field
         self.password_lbl = CLabel(
@@ -112,6 +113,7 @@ class SignInPage(ctk.CTkFrame):
         self.password_field = CInputField(
             self.form_frame, font=CFont.font_small(), height=40, is_password=True
         )
+        self.password_field.insert(ctk.END, "12") #! |||||||||||||||||||||||||||||
         self.pass_show_btn = CButton(
             master=self.form_frame,
             text="",

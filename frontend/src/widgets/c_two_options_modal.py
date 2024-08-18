@@ -68,6 +68,8 @@ class CTwoOptionsModal(ctk.CTkFrame):
             command=self.option_confirm_func,
             text=option_confirm_text,
             text_color="white",
+            fg_color="#ff6f28",
+            hover_color="#b33c00",
             font=CFont.font_btn(16),
             width=100,
         )
@@ -76,6 +78,8 @@ class CTwoOptionsModal(ctk.CTkFrame):
             command=self.option_decline_func,
             text=option_decline_text,
             text_color="white",
+            fg_color="#14d2a2",
+            hover_color="#0fa37e",
             font=CFont.font_btn(16),
             width=80,
         )

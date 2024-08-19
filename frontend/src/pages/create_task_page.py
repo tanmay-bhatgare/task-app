@@ -185,6 +185,7 @@ class CreateTaskPage(ctk.CTkFrame):
             font=CFont.font_med(38),
             fg_color="transparent",
             text_color="white",
+            hover_color="#2b2b2b",
         )
         self.back_button.lift()
         self.back_button.place(x=0, y=0)

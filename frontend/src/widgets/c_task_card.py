@@ -2,11 +2,13 @@ from datetime import datetime
 from typing import Any, Callable, Tuple
 import customtkinter as ctk
 
-from src.widgets.c_seperator import CSeperator
-from src.widgets.c_button import CButton
-from src.widgets.c_frame import CFrame
-from src.constants.c_fonts import CFont
-from src.widgets.c_label import CLabel
+from src.widgets.widget import (
+    CSeperator,
+    CButton,
+    CFrame,
+    CLabel,
+)
+from src.constants.constants import CFont
 
 
 class CTaskCard(ctk.CTkFrame):

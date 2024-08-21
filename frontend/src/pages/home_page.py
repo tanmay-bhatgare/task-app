@@ -18,6 +18,7 @@ from src.widgets.widget import (
     CTaskCard,
     CScrollableFrame,
     CTwoOptionsModal,
+    CAppbar,
 )
 
 from src.constants.constants import (
@@ -71,6 +72,14 @@ class HomePage(ctk.CTkFrame):
 
         self.controller = controller
         self.app_state = app_state
+        self.appbar = CAppbar(
+            master=self,
+            fg_color="#363636",
+            title="Home Page",
+            has_option=True,
+            option_command=lambda: print("Hello"),
+        )
+        self.appbar.pack(side=ctk.TOP, fill=ctk.X)
 
         self.main_frame = CScrollableFrame(
             master=self,
@@ -114,10 +123,10 @@ class HomePage(ctk.CTkFrame):
             if self.current_tasks:
                 self.initialize_task_cards()
             else:
-                self.no_task_found_lbl = CLabel(self.main_frame.canvas, text="No Tasks Found!")
-                self.no_task_found_lbl.pack(
-                    fill="both", expand=True
+                self.no_task_found_lbl = CLabel(
+                    self.main_frame.canvas, text="No Tasks Found!"
                 )
+                self.no_task_found_lbl.pack(fill="both", expand=True)
 
     def fetch_tasks(self) -> Optional[Dict]:
         try:
